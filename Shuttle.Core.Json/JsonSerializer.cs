@@ -19,13 +19,24 @@ namespace Shuttle.Core.Json
 
         public Stream Serialize(object instance)
         {
-            return
-                new MemoryStream(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(instance, _jsonSerializerSettings)));
+            var result = new MemoryStream();
+            using (var jsonWriter = new JsonTextWriter(new StreamWriter(result)) {CloseOutput = false})
+            {
+                var ser = Newtonsoft.Json.JsonSerializer.CreateDefault(_jsonSerializerSettings);
+                ser.Serialize(jsonWriter, instance);
+                jsonWriter.Flush();
+                result.Position = 0;
+                return result;
+            }
         }
 
         public object Deserialize(Type type, Stream stream)
         {
-            return JsonConvert.DeserializeObject(new StreamReader(stream).ReadToEnd(), type, _jsonSerializerSettings);
+            using (JsonTextReader jsonReader = new JsonTextReader(new StreamReader(stream)))
+            {
+                var ser = Newtonsoft.Json.JsonSerializer.CreateDefault(_jsonSerializerSettings);
+                return ser.Deserialize(jsonReader, type);
+            }
         }
 
         public static ISerializer Default()
