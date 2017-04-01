@@ -9,16 +9,13 @@ PM> Install-Package Shuttle.Core.Json
 ```
 
 ``` c#
-_bus = ServiceBus.Create(c => 
-			c.MessageSerializer(JsonSerializer.Default())
-	   ).Start();
+var serializer = JsonSerializer.Default();
 ````
 
 You can also specify `JsonSerializerSettings` when using the constructor to create the `JsonSerializer`:
 
 ``` c#
-_bus = ServiceBus.Create(c => 
-			c.MessageSerializer(new JsonSerializer(new JsonSerializerSettings()))
-	   ).Start();
+var serializer = new JsonSerializer(new JsonSerializerSettings());
 ````
 
+The serializer will register itself when using [Shuttle.Core container bootstrapping](http://shuttle.github.io/shuttle-core/overview-container/#bootstrapping).
