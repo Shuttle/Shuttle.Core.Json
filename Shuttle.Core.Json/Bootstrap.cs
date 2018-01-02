@@ -1,4 +1,6 @@
-﻿using Shuttle.Core.Infrastructure;
+﻿using Shuttle.Core.Container;
+using Shuttle.Core.Contract;
+using Shuttle.Core.Serialization;
 
 namespace Shuttle.Core.Json
 {
@@ -8,7 +10,7 @@ namespace Shuttle.Core.Json
 
         public void Register(IComponentRegistry registry)
         {
-            Guard.AgainstNull(registry, "registry");
+            Guard.AgainstNull(registry, nameof(registry));
 
             if (_registryBootstrapCalled)
             {

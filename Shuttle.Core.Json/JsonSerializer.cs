@@ -1,7 +1,8 @@
 ﻿using System;
 using System.IO;
 using Newtonsoft.Json;
-using Shuttle.Core.Infrastructure;
+using Shuttle.Core.Contract;
+using Shuttle.Core.Serialization;
 
 namespace Shuttle.Core.Json
 {
@@ -11,7 +12,7 @@ namespace Shuttle.Core.Json
 
         public JsonSerializer(JsonSerializerSettings jsonSerializerSettings)
         {
-            Guard.AgainstNull(jsonSerializerSettings, "jsonSerializerSettings");
+            Guard.AgainstNull(jsonSerializerSettings, nameof(jsonSerializerSettings));
 
             _jsonSerializerSettings = jsonSerializerSettings;
         }
