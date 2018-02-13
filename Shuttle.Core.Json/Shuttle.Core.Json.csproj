@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="Shuttle.Core.Container" Version="10.0.4" />
+    <PackageReference Include="Shuttle.Core.Container" Version="10.0.5" />
     <PackageReference Include="Shuttle.Core.Serialization" Version="10.0.0" />
   </ItemGroup>
 
