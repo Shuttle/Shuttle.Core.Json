@@ -1,12 +1,12 @@
 # Shuttle.Core.Json
 
-Json.Net implementation of the `ISerializer` interface.
-
-## Usage
-
 ```
 PM> Install-Package Shuttle.Core.Json
 ```
+
+Json.Net implementation of the `ISerializer` interface.
+
+## Usage
 
 ``` c#
 var serializer = JsonSerializer.Default();
