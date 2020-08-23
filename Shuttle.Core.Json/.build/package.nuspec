@@ -1,14 +1,13 @@
 <?xml version="1.0"?>
-
 <package>
   <metadata>
     <id>Shuttle.Core.Json</id>
     <version>{semver}</version>
     <authors>Eben Roux</authors>
     <owners>Eben Roux</owners>
-    <licenseUrl>https://github.com/shuttle/Shuttle.Core.Json/raw/master/LICENSE</licenseUrl>
+    <license type="expression">BSD-3-Clause</license>
     <projectUrl>https://github.com/shuttle/Shuttle.Core.Json</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/Shuttle/Shuttle.Core.Json/master/.media/logo.png</iconUrl>
+    <icon>images\logo.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Json.Net implementation of the `ISerializer` interface.</description>
     <releaseNotes />
@@ -20,4 +19,8 @@
       <dependency id="Newtonsoft.Json" version="{Newtonsoft.Json-version}" />
     </dependencies>
   </metadata>
+  <files>
+    <file src="..\..\..\..\.media\logo.png" target="images\" />
+	<file src="lib\**\*.*" target="lib" />
+  </files>
 </package>
