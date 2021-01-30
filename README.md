@@ -17,5 +17,3 @@ You can also specify `JsonSerializerSettings` when using the constructor to crea
 ``` c#
 var serializer = new JsonSerializer(new JsonSerializerSettings());
 ````
-
-The serializer will register itself when using [Shuttle.Core container bootstrapping](http://shuttle.github.io/shuttle-core/overview-container/#bootstrapping).
