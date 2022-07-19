@@ -1,6 +1,8 @@
 ﻿using System;
+using System.ComponentModel.Design;
 using System.IO;
-using Newtonsoft.Json;
+using System.Text.Json;
+using Microsoft.Extensions.Options;
 using Shuttle.Core.Contract;
 using Shuttle.Core.Serialization;
 
@@ -8,42 +10,33 @@ namespace Shuttle.Core.Json
 {
     public class JsonSerializer : ISerializer
     {
-        private readonly JsonSerializerSettings _jsonSerializerSettings;
+        private readonly JsonSerializerOptions _jsonSerializerOptions;
 
-        public JsonSerializer(JsonSerializerSettings jsonSerializerSettings)
+        public JsonSerializer(IOptions<JsonSerializerOptions> jsonSerializeOptions)
         {
-            Guard.AgainstNull(jsonSerializerSettings, nameof(jsonSerializerSettings));
+            Guard.AgainstNull(jsonSerializeOptions, nameof(jsonSerializeOptions));
+            Guard.AgainstNull(jsonSerializeOptions.Value, nameof(jsonSerializeOptions.Value));
 
-            _jsonSerializerSettings = jsonSerializerSettings;
+            _jsonSerializerOptions = jsonSerializeOptions.Value;
         }
 
         public Stream Serialize(object instance)
         {
+            Guard.AgainstNull(instance, nameof(instance));
+
             var result = new MemoryStream();
 
-            using (var jsonWriter = new JsonTextWriter(new StreamWriter(result)) {CloseOutput = false})
-            {
-                Newtonsoft.Json.JsonSerializer.CreateDefault(_jsonSerializerSettings).Serialize(jsonWriter, instance);
-                jsonWriter.Flush();
-                result.Position = 0;
-            }
+            System.Text.Json.JsonSerializer.Serialize(result, instance, _jsonSerializerOptions);
 
             return result;
         }
 
         public object Deserialize(Type type, Stream stream)
         {
-            using (var jsonReader = new JsonTextReader(new StreamReader(stream)))
-            {
-                return Newtonsoft.Json.JsonSerializer
-                    .CreateDefault(_jsonSerializerSettings)
-                    .Deserialize(jsonReader, type);
-            }
-        }
+            Guard.AgainstNull(type, nameof(type));
+            Guard.AgainstNull(stream, nameof(stream));
 
-        public static ISerializer Default()
-        {
-            return new JsonSerializer(new JsonSerializerSettings());
+            return System.Text.Json.JsonSerializer.Deserialize(stream, type, _jsonSerializerOptions);
         }
     }
 }
