@@ -21,6 +21,26 @@ namespace Shuttle.Core.Json
 
             services.AddSingleton(Options.Create(jsonSerializerBuilder.Options));
 
+            services.AddOptions<JsonSerializerOptions>().Configure(options =>
+            {
+                options.AllowTrailingCommas = jsonSerializerBuilder.Options.AllowTrailingCommas;
+                options.DefaultBufferSize = jsonSerializerBuilder.Options.DefaultBufferSize;
+                options.DefaultIgnoreCondition = jsonSerializerBuilder.Options.DefaultIgnoreCondition;
+                options.DictionaryKeyPolicy = jsonSerializerBuilder.Options.DictionaryKeyPolicy;
+                options.Encoder = jsonSerializerBuilder.Options.Encoder;
+                options.IgnoreReadOnlyFields = jsonSerializerBuilder.Options.IgnoreReadOnlyFields;
+                options.IncludeFields = jsonSerializerBuilder.Options.IncludeFields;
+                options.IgnoreReadOnlyProperties = jsonSerializerBuilder.Options.IgnoreReadOnlyProperties;
+                options.MaxDepth = jsonSerializerBuilder.Options.MaxDepth;
+                options.NumberHandling = jsonSerializerBuilder.Options.NumberHandling;
+                options.PropertyNameCaseInsensitive = jsonSerializerBuilder.Options.PropertyNameCaseInsensitive;
+                options.PropertyNamingPolicy = jsonSerializerBuilder.Options.PropertyNamingPolicy;
+                options.ReadCommentHandling = jsonSerializerBuilder.Options.ReadCommentHandling;
+                options.ReferenceHandler = jsonSerializerBuilder.Options.ReferenceHandler;
+                options.UnknownTypeHandling = jsonSerializerBuilder.Options.UnknownTypeHandling;
+                options.WriteIndented = jsonSerializerBuilder.Options.WriteIndented;
+            });
+
             return services;
         }
     }
