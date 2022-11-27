@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.Design;
 using System.IO;
 using System.Text.Json;
 using Microsoft.Extensions.Options;
@@ -15,9 +14,8 @@ namespace Shuttle.Core.Json
         public JsonSerializer(IOptions<JsonSerializerOptions> jsonSerializeOptions)
         {
             Guard.AgainstNull(jsonSerializeOptions, nameof(jsonSerializeOptions));
-            Guard.AgainstNull(jsonSerializeOptions.Value, nameof(jsonSerializeOptions.Value));
 
-            _jsonSerializerOptions = jsonSerializeOptions.Value;
+            _jsonSerializerOptions = Guard.AgainstNull(jsonSerializeOptions.Value, nameof(jsonSerializeOptions.Value));
         }
 
         public Stream Serialize(object instance)
