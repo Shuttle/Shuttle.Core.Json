@@ -36,5 +36,8 @@ namespace Shuttle.Core.Json
 
             return System.Text.Json.JsonSerializer.Deserialize(stream, type, _jsonSerializerOptions);
         }
+
+        public string Name => "Json";
+        public byte Id => 2;
     }
 }
