@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text.Json;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using Shuttle.Core.Contract;
 using Shuttle.Core.Serialization;
@@ -37,7 +38,25 @@ namespace Shuttle.Core.Json
             return System.Text.Json.JsonSerializer.Deserialize(stream, type, _jsonSerializerOptions);
         }
 
+        public async Task<Stream> SerializeAsync(object instance)
+        {
+            Guard.AgainstNull(instance, nameof(instance));
+
+            var result = new MemoryStream();
+
+            await System.Text.Json.JsonSerializer.SerializeAsync(result, instance, _jsonSerializerOptions);
+
+            return result;
+        }
+
+        public async Task<object> DeserializeAsync(Type type, Stream stream)
+        {
+            Guard.AgainstNull(type, nameof(type));
+            Guard.AgainstNull(stream, nameof(stream));
+
+            return await System.Text.Json.JsonSerializer.DeserializeAsync(stream, type, _jsonSerializerOptions);
+        }
+
         public string Name => "Json";
-        public byte Id => 2;
     }
 }
