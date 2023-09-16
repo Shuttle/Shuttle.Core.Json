@@ -21,13 +21,7 @@ namespace Shuttle.Core.Json
 
         public Stream Serialize(object instance)
         {
-            Guard.AgainstNull(instance, nameof(instance));
-
-            var result = new MemoryStream();
-
-            System.Text.Json.JsonSerializer.Serialize(result, instance, _jsonSerializerOptions);
-
-            return result;
+            return SerializeAsync(instance, true).GetAwaiter().GetResult();
         }
 
         public object Deserialize(Type type, Stream stream)
@@ -40,11 +34,23 @@ namespace Shuttle.Core.Json
 
         public async Task<Stream> SerializeAsync(object instance)
         {
+            return await SerializeAsync(instance, false).ConfigureAwait(false);
+        }
+
+        public async Task<Stream> SerializeAsync(object instance, bool sync)
+        {
             Guard.AgainstNull(instance, nameof(instance));
 
             var result = new MemoryStream();
 
-            await System.Text.Json.JsonSerializer.SerializeAsync(result, instance, _jsonSerializerOptions);
+            if (sync)
+            {
+                System.Text.Json.JsonSerializer.Serialize(result, instance, _jsonSerializerOptions);
+            }
+            else
+            {
+                await System.Text.Json.JsonSerializer.SerializeAsync(result, instance, _jsonSerializerOptions).ConfigureAwait(false);
+            }
 
             return result;
         }
