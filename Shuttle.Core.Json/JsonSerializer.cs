@@ -37,7 +37,7 @@ namespace Shuttle.Core.Json
             return await SerializeAsync(instance, false).ConfigureAwait(false);
         }
 
-        public async Task<Stream> SerializeAsync(object instance, bool sync)
+        private async Task<Stream> SerializeAsync(object instance, bool sync)
         {
             Guard.AgainstNull(instance, nameof(instance));
 
