@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shuttle.Core.Json", "Shuttle.Core.Json\Shuttle.Core.Json.csproj", "{C9FF9D80-857C-4EFD-8147-7149D8EEEA4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shuttle.Core.Json", "Shuttle.Core.Json\Shuttle.Core.Json.csproj", "{C9FF9D80-857C-4EFD-8147-7149D8EEEA4D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DEA3E479-5972-4A15-8912-6909313F64D1}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shuttle.Core.Json.Tests", "Shuttle.Core.Json.Tests\Shuttle.Core.Json.Tests.csproj", "{70B11DD3-1B19-4A16-AC78-B00FCA73B605}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C9FF9D80-857C-4EFD-8147-7149D8EEEA4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9FF9D80-857C-4EFD-8147-7149D8EEEA4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9FF9D80-857C-4EFD-8147-7149D8EEEA4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70B11DD3-1B19-4A16-AC78-B00FCA73B605}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70B11DD3-1B19-4A16-AC78-B00FCA73B605}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70B11DD3-1B19-4A16-AC78-B00FCA73B605}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70B11DD3-1B19-4A16-AC78-B00FCA73B605}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

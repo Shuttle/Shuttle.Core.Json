@@ -12,7 +12,7 @@
 		<repository type="git" url="https://github.com/shuttle/Shuttle.Core.Json.git" />
 		<projectUrl>https://github.com/shuttle/Shuttle.Core.Json</projectUrl>
 		<description>Json.Net implementation of the `ISerializer` interface.</description>
-		<copyright>Copyright (c) 2022, Eben Roux</copyright>
+		<copyright>Copyright (c) 2024, Eben Roux</copyright>
 		<tags>shuttle serialization json iserializer</tags>
 		<dependencies>
       <dependency id="Microsoft.Extensions.DependencyInjection" version="7.0.0" />
