@@ -1,5 +1,7 @@
 # Shuttle.Core.Json
 
+This package is no longer being maintained.  Please use [Shuttle.Core.](https://github.com/Shuttle/Shuttle.Core.Serialization) instead.
+
 ```
 PM> Install-Package Shuttle.Core.Json
 ```
