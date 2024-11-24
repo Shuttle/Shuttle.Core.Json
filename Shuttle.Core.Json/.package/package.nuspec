@@ -3,7 +3,7 @@
 <package>
 	<metadata>
 		<id>Shuttle.Core.Json</id>
-		<version>12.0.2</version>
+		<version>12.0.3</version>
 		<authors>Eben Roux</authors>
 		<owners>Eben Roux</owners>
 		<license type="expression">BSD-3-Clause</license>
@@ -19,7 +19,7 @@
       <dependency id="Microsoft.Extensions.DependencyInjection" version="8.0.0" />
       <dependency id="Microsoft.Extensions.Options" version="8.0.2" />
       <dependency id="Shuttle.Core.Serialization" version="11.0.0" />
-      <dependency id="System.Text.Json" version="8.0.4" />
+      <dependency id="System.Text.Json" version="8.0.5" />
 		</dependencies>
 	</metadata>
 	<files>
